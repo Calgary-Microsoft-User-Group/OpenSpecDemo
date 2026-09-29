@@ -1,0 +1,18 @@
+<article class="cookie-card cookie-card--<%= cookie.status %>">
+  <a class="cookie-card__link" href="/menu/<%= cookie.id %>">
+    <img class="cookie-card__image" src="<%= cookie.image %>" alt="<%= cookie.name %>" width="200" height="200" loading="lazy">
+    <h3 class="cookie-card__name"><%= cookie.name %></h3>
+  </a>
+  <p class="cookie-card__price"><%= cookie.price %></p>
+  <p class="cookie-card__status">
+    <span class="status-badge status-badge--<%= cookie.status %>"><%= cookie.statusLabel %></span>
+  </p>
+  <% if (cookie.dietFilterLabels.length > 0) { %>
+    <ul class="cookie-card__diet-tags">
+      <% cookie.dietFilterLabels.forEach(function (label) { %>
+        <li class="diet-tag"><%= label %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <p class="cookie-card__allergens">Contains: <%= cookie.allergens.join(", ") %></p>
+</article>

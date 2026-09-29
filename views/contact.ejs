@@ -1,0 +1,24 @@
+<h1>Contact <%= shop.name %></h1>
+
+<address class="contact-info">
+  <p><%= shop.address %></p>
+  <p><a href="tel:<%= shop.phone.replace(/[^+\d]/g, '') %>"><%= shop.phone %></a></p>
+  <p><a href="mailto:<%= shop.email %>"><%= shop.email %></a></p>
+</address>
+
+<h2>Hours</h2>
+<ul class="hero__hours">
+  <% shop.hours.forEach(function (entry) { %>
+    <li><span class="hero__hours-day"><%= entry.day %></span>: <%= entry.open %>–<%= entry.close %></li>
+  <% }) %>
+</ul>
+
+<h2>Find us</h2>
+<div class="map-embed">
+  <iframe
+    src="<%= shop.mapEmbedUrl %>"
+    title="Map showing <%= shop.name %>'s location"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
