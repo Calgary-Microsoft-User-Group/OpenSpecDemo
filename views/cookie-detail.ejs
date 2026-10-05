@@ -1,0 +1,29 @@
+<article class="cookie-detail">
+  <img class="cookie-detail__image" src="<%= cookie.image %>" alt="<%= cookie.name %>" width="320" height="320">
+
+  <div class="cookie-detail__info">
+    <h1><%= cookie.name %></h1>
+    <p class="cookie-detail__description"><%= cookie.description %></p>
+    <p class="cookie-detail__price"><%= cookie.price %></p>
+
+    <% if (inSeason) { %>
+      <p class="cookie-detail__status">
+        <span class="status-badge status-badge--<%= cookie.status %>"><%= cookie.statusLabel %></span>
+      </p>
+    <% } else { %>
+      <p class="cookie-detail__season-note">This cookie is seasonal. It's back starting <strong><%= returnsOnText %></strong>.</p>
+    <% } %>
+
+    <% if (cookie.dietFilterLabels.length > 0) { %>
+      <ul class="cookie-detail__diet-tags">
+        <% cookie.dietFilterLabels.forEach(function (label) { %>
+          <li class="diet-tag"><%= label %></li>
+        <% }) %>
+      </ul>
+    <% } %>
+
+    <p class="cookie-detail__allergens">Contains: <%= cookie.allergens.join(", ") %></p>
+
+    <p><a href="/menu">&larr; Back to the menu</a></p>
+  </div>
+</article>

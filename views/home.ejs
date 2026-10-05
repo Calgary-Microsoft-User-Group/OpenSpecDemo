@@ -1,0 +1,24 @@
+<section class="hero">
+  <h1><%= shop.name %></h1>
+  <p class="hero__tagline"><%= shop.tagline %></p>
+  <p class="hero__address"><%= shop.address %></p>
+  <ul class="hero__hours">
+    <% shop.hours.forEach(function (entry) { %>
+      <li><span class="hero__hours-day"><%= entry.day %></span>: <%= entry.open %>–<%= entry.close %></li>
+    <% }) %>
+  </ul>
+  <p><a class="button" href="/menu">See today's menu</a></p>
+</section>
+
+<section class="featured" aria-labelledby="featured-heading">
+  <h2 id="featured-heading">Today's Favorites</h2>
+  <% if (featured.length === 0) { %>
+    <p>Check back soon for today's picks.</p>
+  <% } else { %>
+    <div class="cookie-grid">
+      <% featured.forEach(function (cookie) { %>
+        <%- include("partials/cookie-card", { cookie }) %>
+      <% }) %>
+    </div>
+  <% } %>
+</section>

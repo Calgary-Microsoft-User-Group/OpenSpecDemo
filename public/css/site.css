@@ -1,0 +1,390 @@
+/* Cookie shop site styles.
+   Palette contrast ratios verified against WCAG 2.1 AA (>=4.5:1 for text);
+   see README.md "Accessibility" section for the checked values. */
+
+:root {
+  --color-bg: #fff8f0;
+  --color-bg-card: #fceedf;
+  --color-border: #e4cbb3;
+  --color-text: #3b2417;
+  --color-text-muted: #6b4a34;
+  --color-brand: #b5482d;
+  --color-brand-dark: #8f3821;
+  --color-badge-sold-out-bg: #f3d8c4;
+  --color-badge-sold-out-text: #7a2e12;
+  --color-badge-low-bg: #fbeab8;
+  --color-badge-low-text: #6b4e00;
+  --color-badge-in-stock-bg: #d9eedf;
+  --color-badge-in-stock-text: #1f5b3a;
+  --font-body: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --max-content-width: 60rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+a {
+  color: var(--color-brand);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-brand-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand-dark);
+  outline-offset: 2px;
+}
+
+/* Skip link: visually hidden until focused, so keyboard users can jump
+   past the header/nav straight to the page content. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-brand);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* --- Header / nav --- */
+
+.site-header {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 1rem;
+}
+
+.site-header__inner {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.site-header__brand {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  padding: 0.25rem 0;
+}
+
+/* --- Main content --- */
+
+main {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.button {
+  display: inline-block;
+  background: var(--color-brand);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.35rem;
+  font-weight: 600;
+}
+
+.button:hover,
+.button:focus {
+  background: var(--color-brand-dark);
+  color: #fff;
+}
+
+/* --- Hero (Home page) --- */
+
+.hero {
+  padding: 1.5rem 0;
+}
+
+.hero__hours {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1rem;
+}
+
+/* --- Cookie grid & cards --- */
+
+.cookie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.cookie-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.cookie-card--sold-out {
+  opacity: 0.7;
+}
+
+.cookie-card__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cookie-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.35rem;
+  background: var(--color-bg);
+}
+
+.cookie-card__name {
+  font-size: 1.05rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.cookie-card__price {
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.cookie-card__allergens {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Status badges: text label always carries the meaning, color is
+   supporting only (never the sole indicator). --- */
+
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge--sold-out {
+  background: var(--color-badge-sold-out-bg);
+  color: var(--color-badge-sold-out-text);
+}
+
+.status-badge--low {
+  background: var(--color-badge-low-bg);
+  color: var(--color-badge-low-text);
+}
+
+.status-badge--in-stock {
+  background: var(--color-badge-in-stock-bg);
+  color: var(--color-badge-in-stock-text);
+}
+
+/* --- Diet tags --- */
+
+.cookie-card__diet-tags,
+.cookie-detail__diet-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0.35rem 0;
+}
+
+.diet-tag {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Filter form --- */
+
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+}
+
+.filter-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filter-form__field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.filter-form select,
+.filter-form button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  min-height: 2.75rem; /* comfortably tappable on phones */
+}
+
+.filter-form__clear {
+  align-self: center;
+}
+
+/* --- Cookie detail --- */
+
+.cookie-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.cookie-detail__image {
+  flex: 1 1 16rem;
+  max-width: 20rem;
+  border-radius: 0.5rem;
+}
+
+.cookie-detail__info {
+  flex: 2 1 16rem;
+}
+
+.cookie-detail__season-note {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.35rem;
+  padding: 0.75rem;
+}
+
+/* --- Bundles --- */
+
+.bundle-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+}
+
+.bundle-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+}
+
+.bundle-card__price {
+  font-weight: 600;
+}
+
+/* --- Contact page --- */
+
+.contact-info {
+  font-style: normal;
+}
+
+.map-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 60%;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+}
+
+.site-footer p {
+  max-width: var(--max-content-width);
+  margin: 0.25rem auto;
+}
+
+.allergen-notice {
+  font-weight: 600;
+}
+
+.site-footer a {
+  color: var(--color-bg);
+}
+
+/* --- Not found page --- */
+
+.not-found {
+  padding: 2rem 0;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "cookie-shop-site",
+  "version": "0.1.0",
+  "description": "A small Node.js website for a cookie shop: browse the menu, see today's stock, check allergens.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,63 @@
+<h1>Menu</h1>
+
+<form class="filter-form" method="get" action="/menu">
+  <div class="filter-form__field">
+    <label for="category">Category</label>
+    <select id="category" name="category">
+      <option value="">All categories</option>
+      <% categories.forEach(function (cat) { %>
+        <option value="<%= cat %>" <%= filters.category === cat ? "selected" : "" %>><%= categoryLabels[cat] %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div class="filter-form__field">
+    <label for="diet">Dietary need</label>
+    <select id="diet" name="diet">
+      <option value="">Any</option>
+      <% dietFilterOptions.forEach(function (d) { %>
+        <option value="<%= d %>" <%= filters.diet === d ? "selected" : "" %>><%= dietLabels[d] %></option>
+      <% }) %>
+    </select>
+  </div>
+
+  <div class="filter-form__field filter-form__field--checkbox">
+    <input type="checkbox" id="hideSoldOut" name="hideSoldOut" value="1" <%= filters.hideSoldOut ? "checked" : "" %>>
+    <label for="hideSoldOut">Hide sold out</label>
+  </div>
+
+  <button type="submit">Apply filters</button>
+  <% if (filters.category || filters.diet || filters.hideSoldOut) { %>
+    <a class="filter-form__clear" href="/menu">Clear filters</a>
+  <% } %>
+</form>
+
+<% if (grouped.length === 0) { %>
+  <p>No cookies match those filters right now.</p>
+<% } else { %>
+  <% grouped.forEach(function (group) { %>
+    <section class="menu-category" aria-labelledby="category-<%= group.category %>">
+      <h2 id="category-<%= group.category %>"><%= group.label %></h2>
+      <div class="cookie-grid">
+        <% group.cookies.forEach(function (cookie) { %>
+          <%- include("partials/cookie-card", { cookie }) %>
+        <% }) %>
+      </div>
+    </section>
+  <% }) %>
+<% } %>
+
+<% if (activeBundles.length > 0) { %>
+  <section class="bundles" aria-labelledby="bundles-heading">
+    <h2 id="bundles-heading">Bundles</h2>
+    <ul class="bundle-list">
+      <% activeBundles.forEach(function (bundle) { %>
+        <li class="bundle-card">
+          <h3><%= bundle.name %></h3>
+          <p><%= bundle.description %></p>
+          <p class="bundle-card__price"><%= bundle.price %> for <%= bundle.count %> cookies</p>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+<% } %>

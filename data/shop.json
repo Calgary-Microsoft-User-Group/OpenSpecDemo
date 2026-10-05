@@ -1,0 +1,20 @@
+{
+  "name": "Placeholder Cookie Co.",
+  "tagline": "Fresh cookies, baked every morning.",
+  "address": "123 Main Street, Springfield, ST 00000",
+  "phone": "+1-555-010-0100",
+  "email": "hello@example.com",
+  "hours": [
+    { "day": "Monday", "open": "08:00", "close": "18:00" },
+    { "day": "Tuesday", "open": "08:00", "close": "18:00" },
+    { "day": "Wednesday", "open": "08:00", "close": "18:00" },
+    { "day": "Thursday", "open": "08:00", "close": "18:00" },
+    { "day": "Friday", "open": "08:00", "close": "19:00" },
+    { "day": "Saturday", "open": "09:00", "close": "19:00" },
+    { "day": "Sunday", "open": "09:00", "close": "16:00" }
+  ],
+  "about": "Placeholder Cookie Co. bakes small batches of cookies fresh every morning using real butter and simple ingredients. This is placeholder text until the shop owner provides their own story.",
+  "mapEmbedUrl": "https://www.openstreetmap.org/export/embed.html?bbox=-74.01,40.70,-73.99,40.72&layer=mapnik",
+  "timeZone": "America/New_York",
+  "defaultLowStockThreshold": 6
+}
